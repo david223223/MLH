@@ -8,4 +8,8 @@ function inputValues4 (name, gender, age, story){
     $$(sel.storyList)[story].click();
 }
 
-module.exports = inputValues4;
+function inputsValuesIntoNameField(name){
+    $(sel.name).setValue(name);
+}
+
+module.exports = { inputValues4, inputsValuesIntoNameField };
