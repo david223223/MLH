@@ -43,8 +43,10 @@ describe('Age Field suite', function () {
             it('TC-032 Name field accepts lower case / upper case', function () {
                 browser.refresh();
                 setsName.inputsValuesIntoNameField(data.name.camelCase);
+                browser.pause(4000)
                 let error = $$(sel.nameError);
                 expect(error).not.toBeDisplayed();
+
             });
 
             it('TC-033 Name field accepts digits', function () {

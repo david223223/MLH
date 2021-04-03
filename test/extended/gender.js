@@ -29,13 +29,26 @@ describe('Age Field suite', function () {
 
             //fix
 
-            // it('User can choose only one button at a time: he', function () {
-            //     $$(sel.radioButtons)[data.gender.he].click();
-            //     browser.pause(3000)
-            //     let sheButton = $$(sel.checkedGender)[0].();
-            //     let itButton = $$(sel.checkedGender)[0].isEnabled();
-            //     expect(sheButton && itButton).toEqual(false);
-            // });
+            it('TC-058 User can choose only one button at a time: he', function () {
+                $$(sel.radioButtons)[data.gender.he].click();
+                let sheButton = $(sel.checkedGender).isSelected();
+                let itButton = $(sel.checkedGender).isSelected();
+                expect(sheButton && itButton).toEqual(false);
+            });
+
+            it('TC-059 User can choose only one button at a time: she', function () {
+                $$(sel.radioButtons)[data.gender.she].click();
+                let heButton = $(sel.checkedGender).isSelected();
+                let itButton = $(sel.checkedGender).isSelected();
+                expect(heButton && itButton).toEqual(false);
+            });
+
+            it('TC-0560 User can choose only one button at a time: it', function () {
+                $$(sel.radioButtons)[data.gender.it].click();
+                let heButton = $(sel.checkedGender).isSelected();
+                let sheButton = $(sel.checkedGender).isSelected();
+                expect(sheButton && itButton).toEqual(false);
+            });
 
             it('TC-061 User can switch the option: he -> she', function () {
                 $$(sel.radioButtons)[data.gender.he].click();
@@ -85,15 +98,15 @@ describe('Age Field suite', function () {
 
             });
 
-            // it('Not chosen button / Required ', function () {
-            //     $(sel.name).setValue(data.name.winnie);
-            //     $(sel.age).setValue(data.age.default);
-            //     $(sel.storyType).click();
-            //     // $(sel.storyTypes)[data.story.comedy].click();
-            //     let subBtn = $$(sel.submit).isEnabled();
-            //     browser.pause(4444)
-            //     expect(subBtn).toEqual(false);
-            // });
+            it('TC-067 Not chosen button / Required ', function () {
+                browser.refresh();
+                $(sel.name).setValue(data.name.winnie);
+                $(sel.age).setValue(data.age.default);
+                $(sel.storyType).click();
+                $$(sel.storyTypes)[data.story.comedy].click();
+                let subBtn = $$(sel.submit);
+                expect(subBtn).not.toBeEnabled();
+            });
 
         });
 
